@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/SEEYOURPLAN"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:Layout_centerInParent="true">
+
+        <Button
+            android:id="@+id/seeYourPlanBTN"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="see your plan" />
+
+        <Button
+            android:id="@+id/seeAllActivitiesBTN"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/seeYourPlanBTN"
+            android:layout_marginTop="8dp"
+            android:text="See all activities" />
+
+        <Button
+            android:id="@+id/aboutUsBTN"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/seeAllActivitiesBTN"
+            android:layout_marginTop="8dp"
+            android:text="about us" />
+
+    </RelativeLayout>
+</RelativeLayout>
