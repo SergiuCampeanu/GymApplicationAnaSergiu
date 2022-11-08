@@ -13,7 +13,6 @@ public class AllTrainingActivity extends AppCompatActivity {
 
     private TrainingRecViewAdapter adapter;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,5 +22,8 @@ public class AllTrainingActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
+        adapter.setTrainings(Utils.getAllTrainings());
     }
 }

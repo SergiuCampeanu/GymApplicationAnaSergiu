@@ -1,6 +1,9 @@
 package com.example.gymapplicationanasergiu;
 
-public class GymTraining {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class GymTraining implements Parcelable {
     private int id;
     private String name;
     private String shortDesc;
@@ -17,6 +20,26 @@ public class GymTraining {
 
     public GymTraining() {
     }
+
+    protected GymTraining(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        shortDesc = in.readString();
+        longDesk = in.readString();
+        imageURL = in.readString();
+    }
+
+    public static final Creator<GymTraining> CREATOR = new Creator<GymTraining>() {
+        @Override
+        public GymTraining createFromParcel(Parcel in) {
+            return new GymTraining(in);
+        }
+
+        @Override
+        public GymTraining[] newArray(int size) {
+            return new GymTraining[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -67,6 +90,20 @@ public class GymTraining {
                 ", longDesk='" + longDesk + '\'' +
                 ", imageURL='" + imageURL + '\'' +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(id);
+        parcel.writeString(name);
+        parcel.writeString(shortDesc);
+        parcel.writeString(longDesk);
+        parcel.writeString(imageURL);
     }
 }
 

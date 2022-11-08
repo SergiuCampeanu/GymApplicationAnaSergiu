@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,11 +36,11 @@ public class TrainingRecViewAdapter extends RecyclerView.Adapter<TrainingRecView
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.training_list_item, viewGroup, false);
         ViewHolder holder = new ViewHolder(view);
-        return null;
+        return holder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         Log.d(TAG, "onBindViewHolder: called");
         viewHolder.txtName.setText(trainings.get(i).getName());
         viewHolder.txtShortDesc.setText(trainings.get(i).getShortDesc());
@@ -49,11 +50,11 @@ public class TrainingRecViewAdapter extends RecyclerView.Adapter<TrainingRecView
                 .load(trainings.get(i).getImageURL())
                 .into(viewHolder.image);
 
-        viewHolder.parent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        viewHolder.parent.setOnClickListener((v) -> {
                 //Todo: navigate to the other activity
-            }
+                Intent intent = new Intent(mContext, TrainingActivity.class);
+                intent.putExtra("training", trainings.get(i));
+                mContext.startActivity(intent);
         });
 
     }
